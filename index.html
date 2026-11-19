@@ -65,6 +65,48 @@ svg{display:block;width:100%;height:auto;min-width:560px;touch-action:none}
 
 .colour-trigger input[type=color]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;padding:0;border:0}
 
+
+/* MARUTOKK: keep the action toolbar pinned to the viewport while designing */
+body{padding-top:76px}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;width:100%;box-sizing:border-box;box-shadow:0 3px 14px rgba(20,45,80,.10)}
+@media(max-width:850px){
+  body{padding-top:124px}
+  header{padding:9px 12px;gap:8px;flex-wrap:wrap}
+  .brand{font-size:18px}
+  .brand-logo{width:42px;height:36px}
+  .actions{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+  .actions button{padding:9px 4px;font-size:11px;white-space:nowrap}
+}
+@media(max-width:380px){
+  body{padding-top:130px}
+  .actions button{font-size:10px;padding:8px 2px}
+}
+
+/* MARUTOKK: keep the live sock preview visible while the customer scrolls */
+.stage{
+  position:sticky !important;
+  top:88px !important; /* below the fixed action toolbar */
+  align-self:start;
+  z-index:900;
+  max-height:calc(100vh - 100px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+@media(max-width:850px){
+  .stage{
+    position:sticky !important;
+    top:132px !important; /* below the two-row mobile toolbar */
+    max-height:calc(100vh - 144px);
+    padding:8px;
+  }
+  .stagebar{margin-bottom:6px}
+  .canvaswrap{max-height:calc(100vh - 220px);overflow:auto;}
+}
+@media(max-width:380px){
+  .stage{top:138px !important;max-height:calc(100vh - 150px)}
+  .canvaswrap{max-height:calc(100vh - 230px)}
+}
+
 </style>
 </head>
 <body>
